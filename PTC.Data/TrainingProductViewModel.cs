@@ -55,6 +55,11 @@ namespace PTC.Data
                     break;
 
                 case "save":
+                    Save();
+                    if (IsValid)
+                    {
+                        Get();
+                    }
                     break;
 
                 default:
@@ -93,6 +98,24 @@ namespace PTC.Data
             };
 
             AddMode();
+        }
+
+        private void Save()
+        {
+            if (IsValid)
+            {
+                if (Mode == "Add")
+                {
+                    //Add data to db here
+                }
+            }
+            else
+            {
+                if (Mode == "Add")
+                {
+                    AddMode();
+                }
+            }
         }
 
         private void ResetSearch()
