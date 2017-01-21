@@ -41,6 +41,16 @@ namespace PTC.Data
                     IsDetailAreaVisible = true;
                     break;
 
+                case "cancel":
+                    IsListAreaVisible = true;
+                    IsSearchAreaVisible = true;
+                    IsDetailAreaVisible = false;
+                    Get();
+                    break;
+
+                case "save":
+                    break;
+
                 default:
                     break;
             }
