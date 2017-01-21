@@ -8,6 +8,7 @@
     <!-- BEGIN HIDDEN FIELDS AREA -->
     @Html.HiddenFor(m => m.EventCommand)
     @Html.HiddenFor(m => m.Mode)
+    @Html.HiddenFor(m => m.EventArgument)
     <!-- END HIDDEN FIELDS AREA -->
 
     <!-- BEGIN SEARCH FIELDS AREA -->
@@ -121,7 +122,7 @@
                     {
                         <tr>
                             <td class="pdsa-action-button-column">
-                                <a href="#" data-pdsa-action="edit" class="btn btn-default btn-sm">
+                                <a href="#" data-pdsa-action="edit" data-pdsa-val="@item.ProductId" class="btn btn-default btn-sm">
                                     <i class="glyphicon glyphicon-edit"></i>
                                 </a>
                             </td>
@@ -147,6 +148,8 @@
                 e.preventDefault();
 
                 $("#EventCommand").val($(this).data("pdsa-action"));
+                $("#EventArgument").val($(this).data("pdsa-val"));
+
                 $("form").submit();
             });
         })

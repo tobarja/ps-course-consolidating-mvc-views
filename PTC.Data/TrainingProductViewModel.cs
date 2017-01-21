@@ -15,6 +15,7 @@ namespace PTC.Data
         public bool IsValid { get; set; }
         public string Mode { get; set; }
         public List<KeyValuePair<string, string>> ValidationErrors { get; set; }
+        public string EventArgument { get; set; }
 
         public TrainingProductViewModel()
         {
@@ -22,6 +23,7 @@ namespace PTC.Data
 
             Products = new List<TrainingProduct>();
             Entity = new TrainingProduct();
+            EventArgument = string.Empty;
             ResetSearch();
         }
 
@@ -62,6 +64,10 @@ namespace PTC.Data
                     {
                         Get();
                     }
+                    break;
+
+                case "edit":
+                    System.Diagnostics.Debugger.Break();
                     break;
 
                 default:
