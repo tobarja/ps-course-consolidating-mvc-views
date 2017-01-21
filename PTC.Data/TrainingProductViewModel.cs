@@ -13,12 +13,17 @@ namespace PTC.Data
 
         public TrainingProductViewModel()
         {
-            IsListAreaVisible = true;
-            IsSearchAreaVisible = true;
-            IsDetailAreaVisible = false;
+            Init();
+
             Products = new List<TrainingProduct>();
-            EventCommand = "list";
             ResetSearch();
+        }
+
+        private void Init()
+        {
+            EventCommand = "List";
+
+            ListMode();
         }
 
         public void HandleRequest()
@@ -36,15 +41,11 @@ namespace PTC.Data
                     break;
 
                 case "add":
-                    IsListAreaVisible = false;
-                    IsSearchAreaVisible = false;
-                    IsDetailAreaVisible = true;
+                    AddMode();
                     break;
 
                 case "cancel":
-                    IsListAreaVisible = true;
-                    IsSearchAreaVisible = true;
-                    IsDetailAreaVisible = false;
+                    ListMode();
                     Get();
                     break;
 
@@ -54,6 +55,20 @@ namespace PTC.Data
                 default:
                     break;
             }
+        }
+
+        private void ListMode()
+        {
+            IsListAreaVisible = true;
+            IsSearchAreaVisible = true;
+            IsDetailAreaVisible = false;
+        }
+
+        private void AddMode()
+        {
+            IsListAreaVisible = false;
+            IsSearchAreaVisible = false;
+            IsDetailAreaVisible = true;
         }
 
         private void ResetSearch()
