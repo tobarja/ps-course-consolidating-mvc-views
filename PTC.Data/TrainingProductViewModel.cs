@@ -14,6 +14,7 @@ namespace PTC.Data
         public TrainingProduct Entity { get; set; }
         public bool IsValid { get; set; }
         public string Mode { get; set; }
+        public List<KeyValuePair<string, string>> ValidationErrors { get; set; }
 
         public TrainingProductViewModel()
         {
@@ -27,6 +28,7 @@ namespace PTC.Data
         private void Init()
         {
             EventCommand = "List";
+            ValidationErrors = new List<KeyValuePair<string, string>>();
 
             ListMode();
         }
@@ -102,19 +104,23 @@ namespace PTC.Data
 
         private void Save()
         {
-            if (IsValid)
+            var mgr = new TrainingProductManager();
+
+            if (Mode == "Add")
             {
-                if (Mode == "Add")
-                {
-                    //Add data to db here
-                }
+                mgr.Insert(Entity);
             }
-            else
+
+            ValidationErrors = mgr.ValidationErrors;
+
+            if (ValidationErrors.Count > 0)
             {
-                if (Mode == "Add")
-                {
-                    AddMode();
-                }
+                IsValid = false;
+            }
+
+            if (!IsValid && Mode == "Add")
+            {
+                AddMode();
             }
         }
 
