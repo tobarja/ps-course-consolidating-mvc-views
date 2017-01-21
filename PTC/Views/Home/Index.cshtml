@@ -1,4 +1,4 @@
-﻿@model List<PTC.Data.TrainingProduct>
+﻿@model PTC.Data.TrainingProductViewModel
 @{
     ViewBag.Title = "Paul's Training Company";
 }
@@ -38,7 +38,7 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach (var item in Model)
+                @foreach (var item in Model.Products)
                 {
                     <tr>
                         <td>@item.ProductName</td>

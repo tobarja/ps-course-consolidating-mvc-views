@@ -7,8 +7,10 @@ namespace PTC.Controllers
     {
         public ActionResult Index()
         {
-            var mgr = new TrainingProductManager();
-            return View(mgr.Get());
+            var vm = new TrainingProductViewModel();
+            vm.Get();
+
+            return View(vm);
         }
 
         public ActionResult About()
