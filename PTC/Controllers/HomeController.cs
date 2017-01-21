@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using PTC.Data;
 using System.Web.Mvc;
 
 namespace PTC.Controllers
@@ -10,7 +7,8 @@ namespace PTC.Controllers
     {
         public ActionResult Index()
         {
-            return View();
+            var mgr = new TrainingProductManager();
+            return View(mgr.Get());
         }
 
         public ActionResult About()

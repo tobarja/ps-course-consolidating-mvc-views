@@ -1,4 +1,5 @@
-﻿@{
+﻿@model List<PTC.Data.TrainingProduct>
+@{
     ViewBag.Title = "Paul's Training Company";
 }
 
@@ -27,17 +28,28 @@
 
     <!-- BEGIN LIST FIELDS AREA -->
     <div class="table-responsive">
-    <table class="table table-condensed table-bordered table-striped table-hover">
-        <thead>
-            <tr>
-                <th>Product Name</th>
-                <th>Introduction Date</th>
-                <th>Url</th>
-                <th>Price</th>
-            </tr>
-        </thead>
+        <table class="table table-condensed table-bordered table-striped table-hover">
+            <thead>
+                <tr>
+                    <th>Product Name</th>
+                    <th>Introduction Date</th>
+                    <th>Url</th>
+                    <th>Price</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.ProductName</td>
+                        <td>@item.IntroductionDate</td>
+                        <td>@item.Url</td>
+                        <td>@item.Price.ToString("c")</td>
+                    </tr>
+                }
+            </tbody>
 
-    </table>
+        </table>
     </div>
     <!-- END LIST FIELDS AREA -->
 }
