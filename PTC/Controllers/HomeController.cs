@@ -8,8 +8,8 @@ namespace PTC.Controllers
         public ActionResult Index()
         {
             var vm = new TrainingProductViewModel();
-            vm.Get();
 
+            vm.HandleRequest();
             return View(vm);
         }
 
