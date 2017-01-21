@@ -40,6 +40,31 @@ namespace PTC.Data
             return ret;
         }
 
+        public TrainingProduct Get(int productId)
+        {
+            var list = new List<TrainingProduct>();
+            var ret = new TrainingProduct();
+
+            list = CreateMockData();
+
+            ret = list.Find(p => p.ProductId == productId);
+
+            return ret;
+        }
+
+        public bool Update(TrainingProduct entity)
+        {
+            var ret = false;
+
+            ret = Validate(entity);
+            if (ret)
+            {
+                // TODO update item
+            }
+
+            return ret;
+        }
+
         public List<TrainingProduct> Get(TrainingProduct entity)
         {
             var ret = new List<TrainingProduct>();

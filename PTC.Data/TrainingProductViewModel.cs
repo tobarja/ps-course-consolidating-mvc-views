@@ -67,7 +67,8 @@ namespace PTC.Data
                     break;
 
                 case "edit":
-                    System.Diagnostics.Debugger.Break();
+                    IsValid = true;
+                    Edit();
                     break;
 
                 default:
@@ -94,6 +95,23 @@ namespace PTC.Data
             Mode = "Add";
         }
 
+        private void EditMode()
+        {
+            IsListAreaVisible = false;
+            IsSearchAreaVisible = false;
+            IsDetailAreaVisible = true;
+
+            Mode = "Edit";
+        }
+
+        private void Edit()
+        {
+            var mgr = new TrainingProductManager();
+
+            Entity = mgr.Get(Convert.ToInt32(EventArgument));
+
+            EditMode();
+        }
         private void Add()
         {
             IsValid = true;
@@ -116,6 +134,10 @@ namespace PTC.Data
             {
                 mgr.Insert(Entity);
             }
+            else
+            {
+                mgr.Update(Entity);
+            }
 
             ValidationErrors = mgr.ValidationErrors;
 
@@ -124,9 +146,16 @@ namespace PTC.Data
                 IsValid = false;
             }
 
-            if (!IsValid && Mode == "Add")
+            if (!IsValid)
             {
-                AddMode();
+                if (Mode == "Add")
+                {
+                    AddMode();
+                }
+                else
+                {
+                    EditMode();
+                }
             }
         }
 
