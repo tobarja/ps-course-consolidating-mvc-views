@@ -6,6 +6,7 @@
 @using (Html.BeginForm())
 {
     <!-- BEGIN HIDDEN FIELDS AREA -->
+    @Html.HiddenFor(m => m.EventCommand)
     <!-- END HIDDEN FIELDS AREA -->
 
     <!-- BEGIN SEARCH FIELDS AREA -->
@@ -15,13 +16,19 @@
         </div>
         <div class="panel-body">
             <div class="form-group">
-                @Html.Label("Product Name")
-                @Html.TextBox("SearchProductName", "", new { @class = "form-control" })
+                @Html.LabelFor(m => m.SearchEntity.ProductName, "Product Name")
+                @Html.TextBoxFor(m => m.SearchEntity.ProductName, new { @class = "form-control" })
             </div>
         </div>
         <div class="panel-footer">
-            <button id="btnSearch" class="btn btn-sm btn-primary">Search</button>
-            <button id="btnSearch" class="btn btn-sm btn-primary">Reset</button>
+            <button id="btnSearch" class="btn btn-sm btn-primary" data-pdsa-action="search">
+                <i class="glyphicon glyphicon-search"></i>
+                &nbsp;Search
+            </button>
+            <button id="btnSearch" class="btn btn-sm btn-primary" data-pdsa-action="resetsearch">
+                <i class="glyphicon glyphicon-share-alt"></i>
+                &nbsp;Reset
+            </button>
         </div>
     </div>
     <!-- END SEARCH FIELDS AREA -->
@@ -56,5 +63,14 @@
 
 @section scripts
 {
-    <script></script>
+    <script>
+        $(document).ready(function () {
+            $("[data-pdsa-action]").on("click", function (e) {
+                e.preventDefault();
+
+                $("#EventCommand").val($(this).data("pdsa-action"));
+                $("form").submit();
+            });
+        })
+    </script>
 }

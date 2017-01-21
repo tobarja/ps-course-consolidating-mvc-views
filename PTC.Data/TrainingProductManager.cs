@@ -5,11 +5,16 @@ namespace PTC.Data
 {
     public class TrainingProductManager
     {
-        public List<TrainingProduct> Get()
+        public List<TrainingProduct> Get(TrainingProduct entity)
         {
             var ret = new List<TrainingProduct>();
 
             ret = CreateMockData();
+
+            if (!string.IsNullOrEmpty(entity.ProductName))
+            {
+                ret = ret.FindAll(p => p.ProductName.ToLower().StartsWith(entity.ProductName, StringComparison.CurrentCultureIgnoreCase));
+            }
 
             return ret;
         }
