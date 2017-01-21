@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace PTC.Data
 {
@@ -10,12 +11,16 @@ namespace PTC.Data
         public bool IsDetailAreaVisible { get; set; }
         public bool IsListAreaVisible { get; set; }
         public bool IsSearchAreaVisible { get; set; }
+        public TrainingProduct Entity { get; set; }
+        public bool IsValid { get; set; }
+        public string Mode { get; set; }
 
         public TrainingProductViewModel()
         {
             Init();
 
             Products = new List<TrainingProduct>();
+            Entity = new TrainingProduct();
             ResetSearch();
         }
 
@@ -41,7 +46,7 @@ namespace PTC.Data
                     break;
 
                 case "add":
-                    AddMode();
+                    Add();
                     break;
 
                 case "cancel":
@@ -59,9 +64,12 @@ namespace PTC.Data
 
         private void ListMode()
         {
+            IsValid = true;
             IsListAreaVisible = true;
             IsSearchAreaVisible = true;
             IsDetailAreaVisible = false;
+
+            Mode = "List";
         }
 
         private void AddMode()
@@ -69,6 +77,22 @@ namespace PTC.Data
             IsListAreaVisible = false;
             IsSearchAreaVisible = false;
             IsDetailAreaVisible = true;
+
+            Mode = "Add";
+        }
+
+        private void Add()
+        {
+            IsValid = true;
+
+            Entity = new TrainingProduct()
+            {
+                IntroductionDate = DateTime.Now,
+                Url = "http://",
+                Price = 0m,
+            };
+
+            AddMode();
         }
 
         private void ResetSearch()
