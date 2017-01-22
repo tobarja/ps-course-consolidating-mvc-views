@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PTC", "PTC\PTC.csproj", "{8
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PTC.Data", "PTC.Data\PTC.Data.csproj", "{9F51188B-D0D7-41D5-9458-5D8A7739ECA3}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PTC.Common", "PTC.Common\PTC.Common.csproj", "{F66A9861-8775-4542-995C-BEED07C8A2B2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{9F51188B-D0D7-41D5-9458-5D8A7739ECA3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9F51188B-D0D7-41D5-9458-5D8A7739ECA3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9F51188B-D0D7-41D5-9458-5D8A7739ECA3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F66A9861-8775-4542-995C-BEED07C8A2B2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F66A9861-8775-4542-995C-BEED07C8A2B2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F66A9861-8775-4542-995C-BEED07C8A2B2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F66A9861-8775-4542-995C-BEED07C8A2B2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

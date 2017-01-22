@@ -194,6 +194,10 @@
     <Content Include="Service References\Application Insights\ConnectedService.json" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\PTC.Common\PTC.Common.csproj">
+      <Project>{f66a9861-8775-4542-995c-beed07c8a2b2}</Project>
+      <Name>PTC.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\PTC.Data\PTC.Data.csproj">
       <Project>{9f51188b-d0d7-41d5-9458-5d8a7739eca3}</Project>
       <Name>PTC.Data</Name>

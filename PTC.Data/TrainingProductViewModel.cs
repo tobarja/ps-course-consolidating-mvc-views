@@ -1,38 +1,25 @@
-﻿using System;
+﻿using PTC.Common;
+using System;
 using System.Collections.Generic;
 
 namespace PTC.Data
 {
-    public class TrainingProductViewModel
+    public class TrainingProductViewModel : ViewModelBase
     {
-        public string EventCommand { get; set; }
         public List<TrainingProduct> Products { get; set; }
         public TrainingProduct SearchEntity { get; set; }
-        public bool IsDetailAreaVisible { get; set; }
-        public bool IsListAreaVisible { get; set; }
-        public bool IsSearchAreaVisible { get; set; }
         public TrainingProduct Entity { get; set; }
-        public bool IsValid { get; set; }
-        public string Mode { get; set; }
-        public List<KeyValuePair<string, string>> ValidationErrors { get; set; }
-        public string EventArgument { get; set; }
-
-        public TrainingProductViewModel()
+        public TrainingProductViewModel() : base()
         {
-            Init();
+        }
 
+        protected override void Init()
+        {
             Products = new List<TrainingProduct>();
             Entity = new TrainingProduct();
             EventArgument = string.Empty;
             ResetSearch();
-        }
-
-        private void Init()
-        {
-            EventCommand = "List";
-            ValidationErrors = new List<KeyValuePair<string, string>>();
-
-            ListMode();
+            base.Init();
         }
 
         public void HandleRequest()
@@ -79,16 +66,6 @@ namespace PTC.Data
                 default:
                     break;
             }
-        }
-
-        private void ListMode()
-        {
-            IsValid = true;
-            IsListAreaVisible = true;
-            IsSearchAreaVisible = true;
-            IsDetailAreaVisible = false;
-
-            Mode = "List";
         }
 
         private void AddMode()
@@ -183,10 +160,11 @@ namespace PTC.Data
             SearchEntity = new TrainingProduct();
         }
 
-        private void Get()
+        protected override void Get()
         {
             var mgr = new TrainingProductManager();
             Products = mgr.Get(SearchEntity);
+            base.Get();
         }
     }
 }

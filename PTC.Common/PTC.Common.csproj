@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{9F51188B-D0D7-41D5-9458-5D8A7739ECA3}</ProjectGuid>
+    <ProjectGuid>{F66A9861-8775-4542-995C-BEED07C8A2B2}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>PTC.Data</RootNamespace>
-    <AssemblyName>PTC.Data</AssemblyName>
+    <RootNamespace>PTC.Common</RootNamespace>
+    <AssemblyName>PTC.Common</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -31,7 +31,6 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
-    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -41,16 +40,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="TrainingProduct.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="TrainingProductManager.cs" />
-    <Compile Include="TrainingProductViewModel.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\PTC.Common\PTC.Common.csproj">
-      <Project>{f66a9861-8775-4542-995c-beed07c8a2b2}</Project>
-      <Name>PTC.Common</Name>
-    </ProjectReference>
+    <Compile Include="ViewModelBase.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
