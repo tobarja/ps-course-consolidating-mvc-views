@@ -61,5 +61,40 @@ namespace PTC.Common
 
             Mode = "Edit";
         }
+
+        protected virtual void Add()
+        {
+            AddMode();
+        }
+
+        protected virtual void Edit()
+        {
+            EditMode();
+        }
+
+        protected virtual void Delete()
+        {
+            ListMode();
+        }
+
+        protected virtual void Save()
+        {
+            if (ValidationErrors.Count > 0)
+            {
+                IsValid = false;
+            }
+
+            if (!IsValid)
+            {
+                if (Mode == "Add")
+                {
+                    AddMode();
+                }
+                else
+                {
+                    EditMode();
+                }
+            }
+        }
     }
 }

@@ -68,16 +68,16 @@ namespace PTC.Data
             }
         }
 
-        private void Edit()
+        protected override void Edit()
         {
             var mgr = new TrainingProductManager();
 
             Entity = mgr.Get(Convert.ToInt32(EventArgument));
 
-            EditMode();
+            base.Edit();
         }
 
-        private void Add()
+        protected override void Add()
         {
             IsValid = true;
 
@@ -88,10 +88,10 @@ namespace PTC.Data
                 Price = 0m,
             };
 
-            AddMode();
+            base.Add();
         }
 
-        private void Save()
+        protected override void Save()
         {
             var mgr = new TrainingProductManager();
 
@@ -106,25 +106,10 @@ namespace PTC.Data
 
             ValidationErrors = mgr.ValidationErrors;
 
-            if (ValidationErrors.Count > 0)
-            {
-                IsValid = false;
-            }
-
-            if (!IsValid)
-            {
-                if (Mode == "Add")
-                {
-                    AddMode();
-                }
-                else
-                {
-                    EditMode();
-                }
-            }
+            base.Save();
         }
 
-        public void Delete()
+        protected override void Delete()
         {
             var mgr = new TrainingProductManager();
             Entity = new TrainingProduct();
@@ -134,7 +119,7 @@ namespace PTC.Data
 
             Get();
 
-            ListMode();
+            base.Delete();
         }
 
         protected override void ResetSearch()
