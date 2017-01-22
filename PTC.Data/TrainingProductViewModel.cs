@@ -68,24 +68,6 @@ namespace PTC.Data
             }
         }
 
-        private void AddMode()
-        {
-            IsListAreaVisible = false;
-            IsSearchAreaVisible = false;
-            IsDetailAreaVisible = true;
-
-            Mode = "Add";
-        }
-
-        private void EditMode()
-        {
-            IsListAreaVisible = false;
-            IsSearchAreaVisible = false;
-            IsDetailAreaVisible = true;
-
-            Mode = "Edit";
-        }
-
         private void Edit()
         {
             var mgr = new TrainingProductManager();
@@ -155,7 +137,7 @@ namespace PTC.Data
             ListMode();
         }
 
-        private void ResetSearch()
+        protected override void ResetSearch()
         {
             SearchEntity = new TrainingProduct();
         }
@@ -164,7 +146,6 @@ namespace PTC.Data
         {
             var mgr = new TrainingProductManager();
             Products = mgr.Get(SearchEntity);
-            base.Get();
         }
     }
 }

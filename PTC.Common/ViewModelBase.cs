@@ -39,5 +39,27 @@ namespace PTC.Common
         protected virtual void Get()
         {
         }
+
+        protected virtual void ResetSearch()
+        {
+        }
+
+        protected void AddMode()
+        {
+            IsListAreaVisible = false;
+            IsSearchAreaVisible = false;
+            IsDetailAreaVisible = true;
+
+            Mode = "Add";
+        }
+
+        protected void EditMode()
+        {
+            IsListAreaVisible = false;
+            IsSearchAreaVisible = false;
+            IsDetailAreaVisible = true;
+
+            Mode = "Edit";
+        }
     }
 }
