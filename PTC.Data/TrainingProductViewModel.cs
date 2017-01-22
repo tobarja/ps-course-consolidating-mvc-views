@@ -71,6 +71,11 @@ namespace PTC.Data
                     Edit();
                     break;
 
+                case "delete":
+                    ResetSearch();
+                    Delete();
+                    break;
+
                 default:
                     break;
             }
@@ -112,6 +117,7 @@ namespace PTC.Data
 
             EditMode();
         }
+
         private void Add()
         {
             IsValid = true;
@@ -157,6 +163,19 @@ namespace PTC.Data
                     EditMode();
                 }
             }
+        }
+
+        public void Delete()
+        {
+            var mgr = new TrainingProductManager();
+            Entity = new TrainingProduct();
+            Entity.ProductId = Convert.ToInt32(EventArgument);
+
+            mgr.Delete(Entity);
+
+            Get();
+
+            ListMode();
         }
 
         private void ResetSearch()

@@ -65,6 +65,13 @@ namespace PTC.Data
             return ret;
         }
 
+        public bool Delete(TrainingProduct entity)
+        {
+            // TODO delete code
+
+            return true;
+        }
+
         public List<TrainingProduct> Get(TrainingProduct entity)
         {
             var ret = new List<TrainingProduct>();
