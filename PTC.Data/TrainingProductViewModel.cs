@@ -22,50 +22,18 @@ namespace PTC.Data
             base.Init();
         }
 
-        public void HandleRequest()
+        protected override void HandleRequest()
         {
             switch (EventCommand.ToLower())
             {
-                case "list":
-                case "search":
-                    Get();
-                    break;
-
-                case "resetsearch":
-                    ResetSearch();
-                    Get();
-                    break;
-
-                case "add":
-                    Add();
-                    break;
-
-                case "cancel":
-                    ListMode();
-                    Get();
-                    break;
-
-                case "save":
-                    Save();
-                    if (IsValid)
-                    {
-                        Get();
-                    }
-                    break;
-
-                case "edit":
-                    IsValid = true;
-                    Edit();
-                    break;
-
-                case "delete":
-                    ResetSearch();
-                    Delete();
+                case "paul":
                     break;
 
                 default:
                     break;
             }
+
+            base.HandleRequest();
         }
 
         protected override void Edit()
@@ -125,12 +93,15 @@ namespace PTC.Data
         protected override void ResetSearch()
         {
             SearchEntity = new TrainingProduct();
+            base.ResetSearch();
         }
 
         protected override void Get()
         {
             var mgr = new TrainingProductManager();
             Products = mgr.Get(SearchEntity);
+
+            base.Get();
         }
     }
 }

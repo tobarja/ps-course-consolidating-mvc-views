@@ -26,6 +26,52 @@ namespace PTC.Common
             ListMode();
         }
 
+        protected virtual void HandleRequest()
+        {
+            switch (EventCommand.ToLower())
+            {
+                case "list":
+                case "search":
+                    Get();
+                    break;
+
+                case "resetsearch":
+                    ResetSearch();
+                    Get();
+                    break;
+
+                case "add":
+                    Add();
+                    break;
+
+                case "cancel":
+                    ListMode();
+                    Get();
+                    break;
+
+                case "save":
+                    Save();
+                    if (IsValid)
+                    {
+                        Get();
+                    }
+                    break;
+
+                case "edit":
+                    IsValid = true;
+                    Edit();
+                    break;
+
+                case "delete":
+                    ResetSearch();
+                    Delete();
+                    break;
+
+                default:
+                    break;
+            }
+        }
+
         protected virtual void ListMode()
         {
             IsValid = true;
